@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clic Estratégico - Agencia de Marketing Integral</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #1B263B;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(135deg, #1B263B, #415a77), url('https://images.unsplash.com/photo-1552664730-d307ca884978');
+      background-size: cover;
+      background-attachment: fixed;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(27, 38, 59, 0.7);
+      z-index: 1;
+    }
+    header * {
+      position: relative;
+      z-index: 2;
+    }
+    header img.logo {
+      width: 180px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 10px 0;
+      animation: fadeIn 1s ease-in;
+    }
+    header p {
+      font-size: 1.4em;
+      max-width: 600px;
+      margin: 10px auto;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #FF6200;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-top: 20px;
+      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    }
+    .cta-button:hover {
+      background: #e55a00;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    nav {
+      background: #1B263B;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #FF6200;
+    }
+    section {
+      padding: 80px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .about, .team, .services, .offers, .testimonials, .blog {
+      background: #f9f9f9;
+      position: relative;
+    }
+    h2 {
+      color: #1B263B;
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      animation: fadeIn 1s ease-in;
+    }
+    .about-grid, .team-grid, .service-grid, .offers-grid, .testimonials-grid, .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .about-card, .team-card, .service-card, .offer-card, .testimonial-card, .blog-card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .about-card:hover, .team-card:hover, .service-card:hover, .offer-card:hover, .testimonial-card:hover, .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .about-card img, .team-card img, .testimonial-card img, .service-card img, .offer-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+    .service-card img, .offer-card img {
+      width: 80px;
+      height: 80px;
+    }
+    .about-card h3, .team-card h3, .service-card h3, .offer-card h3, .testimonial-card h3, .blog-card h3 {
+      color: #1B263B;
+      margin: 10px 0;
+      font-size: 1.5em;
+    }
+    .about-card p, .team-card p, .service-card p, .offer-card p, .testimonial-card p, .blog-card p {
+      font-size: 1em;
+      color: #555;
+    }
+    .contact-form {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .contact-form button {
+      background: #FF6200;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .contact-form button:hover {
+      background: #e55a00;
+      transform: translateY(-3px);
+    }
+    .floating-icons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .floating-icons a, .floating-icons button {
+      display: block;
+      width: 60px;
+      height: 60px;
+      background: #FF6200;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 60px;
+      margin-bottom: 10px;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .floating-icons a:hover, .floating-icons button:hover {
+      background: #e55a00;
+      transform: scale(1.1);
+    }
+    .chatbot {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      width: 300px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      padding: 20px;
+      z-index: 1000;
+    }
+    .chatbot h3 {
+      font-size: 1.2em;
+      color: #1B263B;
+    }
+    .chatbot ul {
+      list-style: none;
+      padding: 0;
+    }
+    .chatbot li {
+      margin: 10px 0;
+      font-size: 0.9em;
+    }
+    .chatbot li strong {
+      color: #FF6200;
+    }
+    footer {
+      background: #1B263B;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    footer a {
+      color: #FF6200;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s ease-in forwards;
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2em;
+      }
+      header p {
+        font-size: 1.2em;
+      }
+      .about-grid, .team-grid, .service-grid, .offers-grid, .testimonials-grid, .blog-grid {
+        grid-template-columns: 1fr;
+      }
+      .chatbot {
+        width: 80%;
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header: Inicio (AIDA - Attention) -->
+  <header id="inicio">
+    <img src="Logo.png" alt="Clic Estratégico Logo" class="logo">
+    <h1>Clic Estratégico - Estrategias que sienten, piensan y venden</h1>
+    <p>Transformamos tu negocio en una marca irresistible con creatividad, tecnología y neuromarketing.</p>
+    <a href="https://wa.me/59177954678?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios" target="_blank" class="cta-button">¡Contáctanos Ahora!</a>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre-nosotros">Sobre Nosotros</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#ofertas">Ofertas</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#blog">Blog</a>
+  </nav>
+
+  <!-- Sobre Nosotros (AIDA - Interest) -->
+  <section id="sobre-nosotros" class="about fade-in">
+    <h2>Sobre Nosotros</h2>
+    <p>En <strong>Clic Estratégico</strong>, revolucionamos el marketing en Bolivia combinando creatividad, tecnología y ciencia del comportamiento humano. Somos una Sociedad de Responsabilidad Limitada (S.R.L.) con 5 socios fundadores, cada uno con un 20% del capital social, comprometidos con el éxito de tu marca.</p>
+    <div class="about-grid">
+      <div class="about-card">
+        <img src="https://images.unsplash.com/photo-1516321310764-20805e6fb3df" alt="Misión">
+        <h3>Nuestra Misión</h3>
+        <p>Impulsar el crecimiento y posicionamiento de marcas a través de estrategias innovadoras, éticas y basadas en el conocimiento profundo del consumidor, generando resultados medibles y duraderos.</p>
+      </div>
+      <div class="about-card">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" alt="Visión">
+        <h3>Nuestra Visión</h3>
+        <p>Ser la agencia de marketing más confiable, creativa y disruptiva de Bolivia, reconocida por transformar negocios en marcas irresistibles y rentables mediante tecnología, empatía y estrategia.</p>
+      </div>
+      <div class="about-card">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Valores">
+        <h3>Nuestros Valores</h3>
+        <p>
+          <strong>Innovación</strong>: Tecnología y neuromarketing para campañas únicas.<br>
+          <strong>Compromiso</strong>: Tus metas son las nuestras.<br>
+          <strong>Transparencia</strong>: Claridad en cada paso.<br>
+          <strong>Excelencia</strong>: Detalles que marcan la diferencia.<br>
+          <strong>Adaptabilidad</strong>: Soluciones al ritmo del mercado.<br>
+          <strong>Empatía</strong>: Entendemos tu esencia.<br>
+          <strong>Pasión</strong>: Amamos lo que hacemos.
+        </p>
+      </div>
+      <div class="about-card">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Impacto">
+        <h3>Nuestro Impacto</h3>
+        <p>
+          <strong>Social</strong>: Empoderamos emprendedores y pymes para competir.<br>
+          <strong>Ambiental</strong>: Comunicación 100% digital para reducir papel.<br>
+          <strong>Económico</strong>: Crecimiento de negocios locales y economía boliviana.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipo (AIDA - Interest) -->
+  <section id="equipo" class="team fade-in">
+    <h2>Nuestro Equipo</h2>
+    <p>Conoce al equipo multidisciplinario que hará realidad tus objetivos de marketing.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="roy.jpeg" alt="Roy">
+        <h3>Roy - Director de Estrategias y Alianzas</h3>
+        <p>Experto en forjar conexiones estratégicas y liderar proyectos innovadores.</p>
+      </div>
+      <div class="team-card">
+        <img src="Harold Martinez.jpeg" alt="Harold">
+        <h3>Harold - Director Creativo y Técnico</h3>
+        <p>Maestro en diseño y tecnología, creando soluciones visuales impactantes.</p>
+      </div>
+      <div class="team-card">
+        <img src="Julio.jpeg" alt="Julio César">
+        <h3>Julio César - Asistente de Diseño Gráfico</h3>
+        <p>Apasionado por transformar ideas en diseños únicos y atractivos.</p>
+      </div>
+      <div class="team-card">
+        <img src="" alt="Valentina">
+        <h3>Valentina - Asistente de Redes Sociales</h3>
+        <p>Especialista en conectar marcas con audiencias en el mundo digital.</p>
+      </div>
+      <div class="team-card">
+        <img src="jhoselin.jpeg" alt="Jhoselin">
+        <h3>Jhoselin - Asistente Administrativo y Logístico</h3>
+        <p>Organiza y optimiza procesos para que todo fluya perfectamente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios (AIDA - Desire) -->
+  <section id="servicios" class="services fade-in">
+    <h2>Nuestros Servicios</h2>
+    <p>Ofrecemos soluciones integrales de marketing digital y tradicional, personalizadas para emprendedores, pymes y empresas consolidadas.</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="impulso emprendedor .jpg" alt="Impulso Emprendedor">
+        <h3>Impulso Emprendedor - Bs. 950</h3>
+        <p>Ideal para negocios que recién comienzan.</p>
+        <ul>
+          <li>Diseño de logo e identidad visual</li>
+          <li>Manejo de redes sociales (básico)</li>
+          <li>3 piezas gráficas</li>
+          <li>1 campaña publicitaria en Meta</li>
+        </ul>
+        <a href="https://wa.me/59177954678?text=Quiero%20el%20paquete%20Impulso%20Emprendedor" target="_blank" class="cta-button">Solicitar Ahora</a>
+      </div>
+      <div class="service-card">
+        <img src="presencia digital.jpg" alt="Presencia Digital">
+        <h3>Presencia Digital - Bs. 1,800</h3>
+        <p>Para una presencia online sólida.</p>
+        <ul>
+          <li>Página web básica</li>
+          <li>Registro de dominio y hosting</li>
+          <li>Branding completo</li>
+          <li>5 piezas gráficas</li>
+          <li>Manejo de redes sociales básico</li>
+        </ul>
+        <a href="https://wa.me/59177954678?text=Quiero%20el%20paquete%20Presencia%20Digital" target="_blank" class="cta-button">Solicitar Ahora</a>
+      </div>
+      <div class="service-card">
+        <img src="acelerador de ventas .jpg" alt="Acelerador de Ventas">
+        <h3>Acelerador de Ventas - Bs. 2,700</h3>
+        <p>Para marcas que quieren aumentar ventas.</p>
+        <ul>
+          <li>Página web avanzada</li>
+          <li>Manejo de redes sociales premium</li>
+          <li>Campaña Meta + Google Ads</li>
+          <li>5 piezas gráficas</li>
+          <li>Video promocional (30-60 seg)</li>
+        </ul>
+        <a href="https://wa.me/59177954678?text=Quiero%20el%20paquete%20Acelerador%20de%20Ventas" target="_blank" class="cta-button">Solicitar Ahora</a>
+      </div>
+      <div class="service-card">
+        <img src="analisis y estrategia .jpg" alt="Análisis y Estrategia">
+        <h3>Análisis y Estrategia - Bs. 2,500</h3>
+        <p>Para optimizar el crecimiento empresarial.</p>
+        <ul>
+          <li>Consultoría estratégica personalizada</li>
+          <li>Neuromarketing y diagnóstico emocional</li>
+          <li>Análisis de datos con Power BI</li>
+          <li>Página web básica</li>
+          <li>Manejo de redes sociales básico</li>
+        </ul>
+        <a href="https://wa.me/59177954678?text=Quiero%20el%20paquete%20Análisis%20y%20Estrategia" target="_blank" class="cta-button">Solicitar Ahora</a>
+      </div>
+      <div class="service-card">
+        <img src="presencia total corporativa .jpg" alt="Presencia Total Corporativa">
+        <h3>Presencia Total Corporativa - Bs. 4,200</h3>
+        <p>La solución completa para empresas ambiciosas.</p>
+        <ul>
+          <li>Página web avanzada</li>
+          <li>Registro de dominio + hosting</li>
+          <li>Manejo de redes sociales premium</li>
+          <li>Branding completo</li>
+          <li>Video promocional</li>
+          <li>Campaña en Meta + Google Ads</li>
+          <li>Consultoría estratégica</li>
+          <li>Análisis con Power BI</li>
+          <li>Evento o lanzamiento de producto</li>
+        </ul>
+        <a href="https://wa.me/59177954678?text=Quiero%20el%20paquete%20Presencia%20Total%20Corporativa" target="_blank" class="cta-button">Solicitar Ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ofertas (AIDA - Desire/Action) -->
+  <section id="ofertas" class="offers fade-in">
+    <h2>Ofertas Especiales</h2>
+    <p>¡Aprovecha nuestras promociones limitadas para impulsar tu marca!</p>
+    <div class="offers-grid">
+      <div class="offer-card">
+        <img src="oferta 1.jpg" alt="Oferta 1">
+        <h3>Impulso Emprendedor - 20% Descuento</h3>
+        <p><strong>Solo Bs. 760</strong> (antes Bs. 950). Perfecto para startups. Incluye logo, redes sociales básicas, 3 piezas gráficas y campaña en Meta. <em>Válido hasta 30/06/2025.</em></p>
+        <a href="https://wa.me/59177954678?text=Quiero%20la%20oferta%20Impulso%20Emprendedor" target="_blank" class="cta-button">Aprovechar Oferta</a>
+      </div>
+      <div class="offer-card">
+        <img src="oferta 2.jpg" alt="Oferta 2">
+        <h3>Presencia Digital + Consultoría Gratis</h3>
+        <p><strong>Bs. 1,800</strong> con consultoría estratégica gratuita (valor Bs. 500). Incluye página web, branding y redes. <em>Válido hasta 15/07/2025.</em></p>
+        <a href="https://wa.me/59177954678?text=Quiero%20la%20oferta%20Presencia%20Digital" target="_blank" class="cta-button">Aprovechar Oferta</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios (AIDA - Desire) -->
+  <section id="testimonios" class="testimonials fade-in">
+    <h2>Testimonios de Nuestros Clientes</h2>
+    <p>Descubre cómo hemos transformado los negocios de nuestros clientes.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <img src="https://images.unsplash.com/photo-1519085360753-afbfb57b62d1" alt="Cliente 1">
+        <h3>María López - Emprendedora</h3>
+        <p>"Clic Estratégico diseñó mi página web y manejó mis redes sociales. ¡Mis ventas aumentaron un 40% en solo dos meses! Su enfoque en neuromarketing es increíble."</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="Cliente 2">
+        <h3>Juan Pérez - Dueño de Pyme</h3>
+        <p>"El paquete 'Acelerador de Ventas' fue un cambio total. El video promocional y las campañas en Google Ads atrajeron clientes nuevos. ¡100% recomendados!"</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="Cliente 3">
+        <h3>Ana Gómez - Gerente Corporativa</h3>
+        <p>"El análisis con Power BI nos dio claridad sobre nuestro mercado. La consultoría estratégica nos ayudó a crecer de forma sostenible."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog (AIDA - Interest/Action) -->
+  <section id="blog" class="blog fade-in">
+    <h2>Blog: Análisis y Estrategias</h2>
+    <p>Explora nuestros análisis estratégicos para entender cómo potenciamos marcas con datos y creatividad.</p>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <h3>Análisis FODA: Conoce tus Fortalezas y Oportunidades</h3>
+        <p><strong>¿Qué es?</strong> El análisis FODA (Fortalezas, Oportunidades, Debilidades, Amenazas) evalúa factores internos y externos para diseñar estrategias efectivas.</p>
+        <p><strong>Fortalezas</strong>: Neuromarketing, Power BI, equipo multidisciplinario, estrategias en 7 días, adaptabilidad, planes accesibles, comunicación directa.</p>
+        <p><strong>Debilidades</strong>: Marca nueva, presupuesto inicial limitado, dependencia de plataformas externas, necesidad de capacitación constante.</p>
+        <p><strong>Oportunidades</strong>: Creciente digitalización, demanda de neuromarketing, interés en datos, eventos como FEXPOCRUZ, apoyo estatal a pymes.</p>
+        <p><strong>Amenazas</strong>: Competencia, cambios en algoritmos, normativas fiscales, piratería, saturación publicitaria.</p>
+      </div>
+      <div class="blog-card">
+        <h3>Estrategias Clave: Impulsa tu Negocio</h3>
+        <p><strong>¿Por qué son importantes?</strong> Nuestras estrategias combinan creatividad, tecnología y psicología para conectar con tu audiencia.</p>
+        <p>1. <strong>Segmentación Avanzada</strong>: Usamos neuromarketing para campañas hiperpersonalizadas, aumentando conversiones.</p>
+        <p>2. <strong>Optimización de Datos</strong>: Dashboards en Power BI para decisiones en tiempo real.</p>
+        <p>3. <strong>Capacitación Continua</strong>: Actualizamos al equipo trimestralmente en tendencias digitales.</p>
+        <p>4. <strong>Alianzas Estratégicas</strong>: Colaboramos con eventos como FEXPOCRUZ para visibilidad.</p>
+        <p>5. <strong>Presencia Digital Sólida</strong>: Creamos contenido educativo para contrarrestar escepticismo hacia neuromarketing.</p>
+      </div>
+      <div class="blog-card">
+        <h3>Rivalidad Ampliada de Porter: Entiende el Mercado</h3>
+        <p><strong>¿Qué es?</strong> El modelo de Porter analiza cinco fuerzas competitivas para definir estrategias de mercado.</p>
+        <p><strong>1. Competencia en la Industria</strong>: Alta, pero nos diferenciamos con neuromarketing y Power BI.</p>
+        <p><strong>2. Amenaza de Nuevos Entrantes</strong>: Moderada; nuestro enfoque tecnológico es una barrera.</p>
+        <p><strong>3. Poder de Negociación de Clientes</strong>: Alto en pymes; ofrecemos precios competitivos.</p>
+        <p><strong>4. Poder de Negociación de Proveedores</strong>: Bajo, usamos plataformas estándar (Meta, Google).</p>
+        <p><strong>5. Amenaza de Sustitutos</strong>: Moderada, contrarrestada por nuestra propuesta integral.</p>
+      </div>
+      <div class="blog-card">
+        <h3>Matriz BCG: Prioriza tus Inversiones</h3>
+        <p><strong>¿Qué es?</strong> La Matriz BCG clasifica servicios según crecimiento y participación de mercado para optimizar recursos.</p>
+        <p><strong>Estrellas</strong>: “Acelerador de Ventas” y “Presencia Total Corporativa” (alta demanda, alto crecimiento).</p>
+        <p><strong>Vacas Lecheras</strong>: “Impulso Emprendedor” (estable, márgenes sólidos).</p>
+        <p><strong>Interrogantes</strong>: “Análisis y Estrategia” (potencial, requiere educación del cliente).</p>
+        <p><strong>Perros</strong>: Ninguno actualmente, todos los paquetes son viables.</p>
+        <p><strong>Estrategia</strong>: Invertir en “Estrellas” e “Interrogantes” para maximizar crecimiento.</p>
+      </div>
+    </div>
+    <p style="text-align: center;"><a href="https://wa.me/59177954678?text=Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20an%C3%A1lisis%20estrat%C3%A9gicos" target="_blank" class="cta-button">¡Contáctanos para Estrategias!</a></p>
+  </section>
+
+  <!-- Floating Icons -->
+  <div class="floating-icons">
+    <a href="https://wa.me/59177954678?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios" target="_blank" title="WhatsApp">
+      <img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp" style="width: 60px; height: 60px;">
+    </a>
+    <button onclick="toggleChatbot()" title="Chatbot de Preguntas Frecuentes">
+      <img src="https://img.icons8.com/color/48/000000/chat.png" alt="Chatbot" style="width: 60px; height: 60px;">
+    </button>
+  </div>
+
+  <!-- Chatbot FAQ -->
+  <div class="chatbot" id="chatbot">
+    <h3>Preguntas Frecuentes</h3>
+    <ul>
+      <li><strong>¿Qué es neuromarketing?</strong> Es el uso de la psicología y neurociencia para crear campañas que conectan emocionalmente con los consumidores.</li>
+      <li><strong>¿Qué incluye el manejo de redes sociales premium?</strong> Estrategias avanzadas, contenido personalizado, y campañas publicitarias optimizadas.</li>
+      <li><strong>¿En cuánto tiempo entregan una página web?</strong> Páginas básicas en 7 días hábiles; avanzadas en 10-14 días.</li>
+      <li><strong>¿Cómo usan Power BI?</strong> Creamos dashboards interactivos para analizar datos y optimizar decisiones.</li>
+      <li><strong>¿Ofrecen planes personalizados?</strong> Sí, contáctanos para crear una solución a tu medida.</li>
+    </ul>
+  </div>
+
+  <!-- Footer with Contact Form (AIDA - Action) -->
+  <footer id="contact">
+    <h2>Contáctanos</h2>
+    <div class="contact-form">
+      <form action="https://wa.me/59177954678" method="get" target="_blank">
+        <input type="text" name="text" placeholder="Nombre" required>
+        <input type="email" name="text" placeholder="Correo Electrónico" required>
+        <textarea name="text" placeholder="Mensaje" rows="5" required></textarea>
+        <button type="submit">Enviar Mensaje</button>
+      </form>
+    </div>
+    <p>Correo: <a href="mailto:info@clicestrategico.com">info@clicestrategico.com</a> | WhatsApp: <a href="https://wa.me/59177954678">+591 77954678</a></p>
+    <p>Síguenos: <a href="#">Facebook</a> | <a href="#">Instagram</a></p>
+    <p>© 2025 Clic Estratégico S.R.L. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Chatbot toggle
+    function toggleChatbot() {
+      const chatbot = document.getElementById('chatbot');
+      chatbot.style.display = chatbot.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Fade-in on scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.2 });
+    fadeElements.forEach(el => observer.observe(el));
+
+    // Form submission to WhatsApp
+    document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = encodeURIComponent(document.querySelector('input[name="text"]').value);
+      const email = encodeURIComponent(document.querySelector('input[type="email"]').value);
+      const message = encodeURIComponent(document.querySelector('textarea[name="text"]').value);
+      const whatsappMessage = `Nombre: ${name}%0AEmail: ${email}%0AMensaje: ${message}`;
+      window.open(`https://wa.me/59177954678?text=${whatsappMessage}`, '_blank');
+    });
+  </script>
+</body>
+</html>
