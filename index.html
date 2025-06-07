@@ -101,7 +101,7 @@
       max-width: 1400px;
       margin: 0 auto;
     }
-    .about, .team, .services, .offers, .testimonials, .blog {
+    .about, .launch, .team, .services, .offers, .testimonials, .blog {
       background: #f9f9f9;
       position: relative;
     }
@@ -112,13 +112,13 @@
       margin-bottom: 30px;
       animation: fadeIn 1s ease-in;
     }
-    .about-grid, .team-grid, .service-grid, .offers-grid, .testimonials-grid, .blog-grid {
+    .about-grid, .launch-grid, .team-grid, .service-grid, .offers-grid, .testimonials-grid, .blog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
       margin-top: 30px;
     }
-    .about-card, .team-card, .service-card, .offer-card, .testimonial-card, .blog-card {
+    .about-card, .launch-card, .team-card, .service-card, .offer-card, .testimonial-card, .blog-card {
       background: white;
       padding: 25px;
       border-radius: 15px;
@@ -126,11 +126,11 @@
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .about-card:hover, .team-card:hover, .service-card:hover, .offer-card:hover, .testimonial-card:hover, .blog-card:hover {
+    .about-card:hover, .launch-card:hover, .team-card:hover, .service-card:hover, .offer-card:hover, .testimonial-card:hover, .blog-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
-    .about-card img, .team-card img, .testimonial-card img, .service-card img, .offer-card img {
+    .about-card img, .launch-card img, .team-card img, .testimonial-card img, .service-card img, .offer-card img {
       width: 120px;
       height: 120px;
       border-radius: 50%;
@@ -141,14 +141,25 @@
       width: 80px;
       height: 80px;
     }
-    .about-card h3, .team-card h3, .service-card h3, .offer-card h3, .testimonial-card h3, .blog-card h3 {
+    .about-card h3, .launch-card h3, .team-card h3, .service-card h3, .offer-card h3, .testimonial-card h3, .blog-card h3 {
       color: #1B263B;
       margin: 10px 0;
       font-size: 1.5em;
     }
-    .about-card p, .team-card p, .service-card p, .offer-card p, .testimonial-card p, .blog-card p {
+    .about-card p, .launch-card p, .team-card p, .service-card p, .offer-card p, .testimonial-card p, .blog-card p {
       font-size: 1em;
       color: #555;
+    }
+    .launch-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      filter: brightness(1.1);
+      transition: transform 0.3s, filter 0.3s;
+    }
+    .launch-card img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.2);
     }
     .contact-form {
       max-width: 700px;
@@ -255,7 +266,7 @@
       header p {
         font-size: 1.2em;
       }
-      .about-grid, .team-grid, .service-grid, .offers-grid, .testimonials-grid, .blog-grid {
+      .about-grid, .launch-grid, .team-grid, .service-grid, .offers-grid, .testimonials-grid, .blog-grid {
         grid-template-columns: 1fr;
       }
       .chatbot {
@@ -278,6 +289,7 @@
   <nav>
     <a href="#inicio">Inicio</a>
     <a href="#sobre-nosotros">Sobre Nosotros</a>
+    <a href="#lanzamiento">Gran Lanzamiento</a>
     <a href="#equipo">Equipo</a>
     <a href="#servicios">Servicios</a>
     <a href="#ofertas">Ofertas</a>
@@ -291,7 +303,7 @@
     <p>En <strong>Clic Estratégico</strong>, revolucionamos el marketing en Bolivia combinando creatividad, tecnología y ciencia del comportamiento humano. Somos una Sociedad de Responsabilidad Limitada (S.R.L.) con 5 socios fundadores, cada uno con un 20% del capital social, comprometidos con el éxito de tu marca.</p>
     <div class="about-grid">
       <div class="about-card">
-        <img src="https://images.unsplash.com/photo-1516321310764-20805e6fb3df" alt="Misión">
+        <img src="mision.jpg" alt="Misión">
         <h3>Nuestra Misión</h3>
         <p>Impulsar el crecimiento y posicionamiento de marcas a través de estrategias innovadoras, éticas y basadas en el conocimiento profundo del consumidor, generando resultados medibles y duraderos.</p>
       </div>
@@ -325,6 +337,20 @@
     </div>
   </section>
 
+  <!-- Gran Lanzamiento (AIDA - Attention/Interest/Desire/Action) -->
+  <section id="lanzamiento" class="launch fade-in">
+    <h2>¡Gran Lanzamiento en Udinova!</h2>
+    <p>Únete a nosotros el <strong>7 de junio de 2025</strong> en Udinova para celebrar el inicio de una nueva era en marketing digital en Bolivia. Descubre cómo Clic Estratégico combina creatividad, tecnología y neuromarketing para transformar tu negocio en una marca irresistible.</p>
+    <div class="launch-grid">
+      <div class="launch-card">
+        <img src="gran lanzamiento.jpg" alt="Gran Lanzamiento">
+        <h3>Evento Exclusivo</h3>
+        <p>Conferencias, talleres y networking con expertos en marketing. ¡Regístrate ahora y sé parte de la revolución del marketing en Bolivia!</p>
+        <a href="https://wa.me/59177954678?text=Quiero%20registrarme%20para%20el%20Gran%20Lanzamiento%20en%20Udinova" target="_blank" class="cta-button">¡Regístrate Aquí!</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Equipo (AIDA - Interest) -->
   <section id="equipo" class="team fade-in">
     <h2>Nuestro Equipo</h2>
@@ -346,7 +372,7 @@
         <p>Apasionado por transformar ideas en diseños únicos y atractivos.</p>
       </div>
       <div class="team-card">
-        <img src="" alt="Valentina">
+        <img src="valentina.jpg" alt="Valentina">
         <h3>Valentina - Asistente de Redes Sociales</h3>
         <p>Especialista en conectar marcas con audiencias en el mundo digital.</p>
       </div>
@@ -451,6 +477,12 @@
         <p><strong>Bs. 1,800</strong> con consultoría estratégica gratuita (valor Bs. 500). Incluye página web, branding y redes. <em>Válido hasta 15/07/2025.</em></p>
         <a href="https://wa.me/59177954678?text=Quiero%20la%20oferta%20Presencia%20Digital" target="_blank" class="cta-button">Aprovechar Oferta</a>
       </div>
+      <div class="offer-card">
+        <img src="oferta 3.jpg" alt="Promoción por Lanzamiento">
+        <h3>Promoción por Lanzamiento - ¡30% Descuento!</h3>
+        <p><strong>Acelerador de Ventas por solo Bs. 1,890</strong> (antes Bs. 2,700). Potencia tus ventas con una página web avanzada, manejo premium de redes sociales, campañas en Meta y Google Ads, y más. <em>Válido todo junio 2025.</em></p>
+        <a href="https://wa.me/59177954678?text=Quiero%20la%20promoción%20por%20lanzamiento%20Acelerador%20de%20Ventas" target="_blank" class="cta-button">¡Click Aquí para Obtener la Oferta!</a>
+      </div>
     </div>
   </section>
 
@@ -460,17 +492,17 @@
     <p>Descubre cómo hemos transformado los negocios de nuestros clientes.</p>
     <div class="testimonials-grid">
       <div class="testimonial-card">
-        <img src="https://images.unsplash.com/photo-1519085360753-afbfb57b62d1" alt="Cliente 1">
+        <img src="cliente 1.jpg" alt="Cliente 1">
         <h3>María López - Emprendedora</h3>
         <p>"Clic Estratégico diseñó mi página web y manejó mis redes sociales. ¡Mis ventas aumentaron un 40% en solo dos meses! Su enfoque en neuromarketing es increíble."</p>
       </div>
       <div class="testimonial-card">
-        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" alt="Cliente 2">
-        <h3>Juan Pérez - Dueño de Pyme</h3>
+        <img src="cliente 2.jpg" alt="Cliente 2">
+        <h3>Mauricio Pérez - Dueño de Pyme</h3>
         <p>"El paquete 'Acelerador de Ventas' fue un cambio total. El video promocional y las campañas en Google Ads atrajeron clientes nuevos. ¡100% recomendados!"</p>
       </div>
       <div class="testimonial-card">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="Cliente 3">
+        <img src="cliente 3.jpg" alt="Cliente 3">
         <h3>Ana Gómez - Gerente Corporativa</h3>
         <p>"El análisis con Power BI nos dio claridad sobre nuestro mercado. La consultoría estratégica nos ayudó a crecer de forma sostenible."</p>
       </div>
